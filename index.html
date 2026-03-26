@@ -115,8 +115,17 @@ function abrirConvite() {
 
   // ⏭️ próxima tela
   video.onended = () => {
+    const tela3 = document.getElementById("tela3");
+  
     trocarTela('tela3');
-  };
+  
+    // reset da animação (caso volte pra tela 3 depois)
+    tela3.classList.remove("tela3-animando");
+  
+    setTimeout(() => {
+      tela3.classList.add("tela3-animando");
+    }, 50);
+};
 }
 
 /* =========================
