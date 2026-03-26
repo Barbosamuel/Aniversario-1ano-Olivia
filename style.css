@@ -55,7 +55,7 @@ body {
 .area-abrir {
   width: 60%;
   height: 20%;
-  top: 55%;
+  top: 60%;
   left: 50%;
   transform: translate(-50%, -50%);
 }
@@ -63,7 +63,7 @@ body {
 /* tela 3 */
 .areas-botoes {
   position: absolute;
-  top: 45%; /* você pode ajustar */
+  top: 60%; /* você pode ajustar */
   width: 100%;
   height: 80px;
 }
@@ -78,19 +78,19 @@ body {
 /* botão 1 */
 .areas-botoes .circulo:nth-child(1) {
   position: absolute;
-  left: 5%;
+  left: 15%;
 }
 
 /* botão 2 */
 .areas-botoes .circulo:nth-child(2) {
   position: absolute;
-  left: 45%;
+  left: 43%;
 }
 
 /* botão 3 */
 .areas-botoes .circulo:nth-child(3) {
   position: absolute;
-  left: 80%;
+  left: 60%;
 }
 
 /* tela 4 */
@@ -99,7 +99,7 @@ body {
   height: 60px;
   border-radius: 50%;
   top: 5%;
-  right: 5%;
+  right: 10%;
 }
 
 /* contador */
