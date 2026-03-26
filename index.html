@@ -76,33 +76,40 @@
 
 <script>
 function abrirConvite() {
-  // 🔔 som de abertura
   const som = document.getElementById("open-sound");
+  const music = document.getElementById("bg-music");
+  const video = document.getElementById("video2");
+
+  // 🔔 som de abertura
   som.currentTime = 0;
   som.volume = 1.0;
-  som.play().catch(() => {});
 
-  // 🎵 música de fundo (com pequeno delay)
-  const music = document.getElementById("bg-music");
-  music.volume = 0.4;
+  som.play().then(() => {
 
-  setTimeout(() => {
+    // 🎵 música começa depois do clique (garantido)
+    music.currentTime = 0;
+    music.volume = 0.4;
     music.play().catch(() => {});
-  }, 300); // 👈 ESSENCIAL
 
-  // troca tela
-  trocarTela('tela2');
+    // troca tela
+    trocarTela('tela2');
 
-  const video = document.getElementById("video2");
-  video.currentTime = 0;
+    // 🎬 inicia vídeo
+    video.currentTime = 0;
+    video.muted = true;
 
-  setTimeout(() => {
-    video.play().catch(() => {});
-  }, 100);
+    video.play().then(() => {
+      // quando terminar → tela 3
+      video.onended = () => {
+        trocarTela('tela3');
+      };
+    }).catch(() => {
+      console.log("Erro ao iniciar vídeo");
+    });
 
-  video.onended = () => {
-    trocarTela('tela3');
-  };
+  }).catch(() => {
+    console.log("Erro ao tocar som");
+  });
 }
 </script>
 
