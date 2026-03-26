@@ -87,10 +87,10 @@ body {
 .botao-calendario {
   position: absolute;
 
-  width: 45%;   /* largura do retângulo */
+  width: 30%;   /* largura do retângulo */
   height: 10%;  /* altura */
 
-  top: 48%;     /* 👈 fica acima dos círculos */
+  top: 30%;     /* 👈 fica acima dos círculos */
   right: 8%;    /* 👈 alinhado mais pra direita */
 
   border-radius: 12px;
