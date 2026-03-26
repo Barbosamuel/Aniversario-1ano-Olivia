@@ -93,6 +93,10 @@ function abrirConvite() {
   som.volume = 1;
   som.play().catch(() => {});
 
+  music.currentTime = 0;
+  music.volume = 1;
+  music.play().catch(() => {});
+
   // 🎬 vídeo
   video.currentTime = 0;
   video.play().catch(() => {});
@@ -102,10 +106,10 @@ function abrirConvite() {
   };
 
   // 🎵 música (leve delay pra não conflitar)
-  setTimeout(() => {
+  /*setTimeout(() => {
     music.volume = 0.4;
     music.play().catch(() => {});
-  }, 300);
+  }, 300);*/
 }
 
 /* CONTADOR */
