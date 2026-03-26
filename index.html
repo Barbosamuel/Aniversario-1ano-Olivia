@@ -58,12 +58,8 @@
 
     <div class="contador" id="contador"></div>
     <!-- BOTÃO CALENDÁRIO -->
-    <a 
-        href="https://www.google.com/calendar/render?action=TEMPLATE&text=Aniversário+de+1+Ano+da+Olívia&dates=20260815T210000Z/20260815T230000Z&details=Venha+celebrar+esse+momento+especial!&location=https://maps.app.goo.gl/jEGpRhF978vjguDN7"
-        target="_blank"
-        class="area botao-calendario"
-      ></a>
-
+    <a href="#" class="area botao-calendario" onclick="abrirCalendario()"></a>
+    
     <div class="areas-botoes">
       <a href="https://docs.google.com/forms/d/e/1FAIpQLSe4CqGrIl2k3zMmTyd9MqphWRWIwXuzMXq1noNEW51Jq_i5UA/viewform?usp=header" target="_blank" class="area circulo"></a>
       <a href="https://maps.app.goo.gl/jEGpRhF978vjguDN7" target="_blank" class="area circulo"></a>
@@ -148,6 +144,26 @@ function atualizarContador() {
 
 setInterval(atualizarContador, 1000);
 atualizarContador();
+
+  /* =========================
+  MARCAR NO CALENDARIO - ANDROID OU IOS
+========================= */
+function abrirCalendario() {
+  const userAgent = navigator.userAgent || navigator.vendor || window.opera;
+
+  const isIOS = /iPad|iPhone|iPod/.test(userAgent) && !window.MSStream;
+
+  if (isIOS) {
+    // 🍎 iPhone → arquivo .ics
+    window.open("assets/aniversario.ics", "_blank");
+  } else {
+    // 🤖 Android / 💻 Desktop → Google Calendar
+    window.open(
+      "https://www.google.com/calendar/render?action=TEMPLATE&text=Aniversário+de+1+Ano+da+Olívia&dates=20260815T210000Z/20260815T230000Z&details=Venha+celebrar+esse+momento+especial!&location=https://maps.app.goo.gl/jEGpRhF978vjguDN7",
+      "_blank"
+    );
+  }
+}
 </script>
 
 </body>
