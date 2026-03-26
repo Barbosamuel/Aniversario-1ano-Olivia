@@ -62,10 +62,10 @@ body {
 ========================= */
 .area {
   position: absolute;
-  border: none;
-  background: transparent;
-  /*border: 2px solid red; /* REMOVER DEPOIS */
-  /*background: rgba(255,0,0,0.1);  /*REMOVER DEPOIS */
+  /*border: none;
+  background: transparent;*/
+  border: 2px solid red; 
+  background: rgba(255,0,0,0.1);
   cursor: pointer;
 }
 
@@ -80,6 +80,20 @@ body {
   left: 50%;
 
   transform: translate(-50%, -50%);
+}
+/* =========================
+   TELA 3 - BOTÃO CALENDÁRIO
+========================= */
+.botao-calendario {
+  position: absolute;
+
+  width: 45%;   /* largura do retângulo */
+  height: 10%;  /* altura */
+
+  top: 48%;     /* 👈 fica acima dos círculos */
+  right: 8%;    /* 👈 alinhado mais pra direita */
+
+  border-radius: 12px;
 }
 
 /* =========================
