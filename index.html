@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Convite de Aniversário</title>
+  <title>Convite</title>
   <link rel="stylesheet" href="style.css">
 </head>
 
@@ -17,16 +17,14 @@
   </audio>
 
   <!-- TELA 1 -->
-  <section id="tela1" class="tela">
+  <section id="tela1" class="tela ativa">
     <img src="assets/tela1.jpg" class="media">
-
-    <!-- BOTÃO INVISÍVEL CENTRAL -->
-    <button class="area area-abrir" onclick="irPara('tela2')"></button>
+    <button class="area area-abrir" onclick="trocarTela('tela2')"></button>
   </section>
 
   <!-- TELA 2 -->
   <section id="tela2" class="tela">
-    <video class="media" autoplay muted playsinline id="video2">
+    <video class="media" id="video2" muted playsinline>
       <source src="assets/tela2.mp4" type="video/mp4">
     </video>
   </section>
@@ -37,14 +35,12 @@
       <source src="assets/tela3.mp4" type="video/mp4">
     </video>
 
-    <!-- CONTADOR -->
     <div class="contador" id="contador"></div>
 
-    <!-- BOTÕES INVISÍVEIS (3 CÍRCULOS) -->
     <div class="areas-botoes">
       <a href="https://docs.google.com/forms/d/e/1FAIpQLSe4CqGrIl2k3zMmTyd9MqphWRWIwXuzMXq1noNEW51Jq_i5UA/viewform?usp=header" target="_blank" class="area circulo"></a>
       <a href="https://maps.app.goo.gl/jEGpRhF978vjguDN7" target="_blank" class="area circulo"></a>
-      <button class="area circulo" onclick="irPara('tela4')"></button>
+      <button class="area circulo" onclick="trocarTela('tela4')"></button>
     </div>
   </section>
 
@@ -54,23 +50,28 @@
       <source src="assets/tela4.mp4" type="video/mp4">
     </video>
 
-    <!-- BOTÃO VOLTAR -->
-    <button class="area voltar" onclick="irPara('tela3')"></button>
+    <button class="area voltar" onclick="trocarTela('tela3')"></button>
   </section>
 
 </div>
 
 <script>
-function irPara(id) {
-  document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
+function trocarTela(id) {
+  document.querySelectorAll('.tela').forEach(t => t.classList.remove('ativa'));
+  document.getElementById(id).classList.add('ativa');
+
+  // tocar vídeo da tela 2 ao entrar
+  if (id === 'tela2') {
+    const video = document.getElementById("video2");
+    video.play();
+
+    video.onended = () => {
+      trocarTela('tela3');
+    };
+  }
 }
 
-// Auto avançar vídeo
-document.getElementById("video2").addEventListener("ended", function() {
-  irPara('tela3');
-});
-
-// Música ao primeiro clique
+// música ao primeiro clique
 document.body.addEventListener('click', function () {
   const music = document.getElementById("bg-music");
   music.play().catch(() => {});
