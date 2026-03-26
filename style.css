@@ -13,8 +13,10 @@ body {
 
 /* celular */
 .app {
-  width: 360px;
+  aspect-ratio: 9 / 16;
   height: 100vh;
+  max-width: 100vw;
+
   position: relative;
   overflow: hidden;
   border-radius: 25px;
@@ -38,7 +40,7 @@ body {
 .media {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain; /* 👈 ESSENCIAL */
 }
 
 /* DEBUG BOTÕES */
@@ -61,40 +63,40 @@ body {
 /* tela 3 */
 .areas-botoes {
   position: absolute;
-  top: 65%; /* você pode ajustar */
+  top: 45%; /* você pode ajustar */
   width: 100%;
   height: 80px;
 }
 
 /* cada botão separado */
 .circulo {
-  width: 60px;
-  height: 60px;
+  width: 70px;
+  height: 70px;
   border-radius: 50%;
 }
 
 /* botão 1 */
 .areas-botoes .circulo:nth-child(1) {
   position: absolute;
-  left: 15%;
+  left: 5%;
 }
 
 /* botão 2 */
 .areas-botoes .circulo:nth-child(2) {
   position: absolute;
-  left: 40%;
+  left: 45%;
 }
 
 /* botão 3 */
 .areas-botoes .circulo:nth-child(3) {
   position: absolute;
-  left: 70%;
+  left: 80%;
 }
 
 /* tela 4 */
 .voltar {
-  width: 50px;
-  height: 50px;
+  width: 60px;
+  height: 60px;
   border-radius: 50%;
   top: 5%;
   right: 5%;
