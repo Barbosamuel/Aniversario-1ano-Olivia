@@ -80,50 +80,34 @@ function trocarTela(id) {
   document.getElementById(id).classList.add('ativa');
 }
 
-/* 🔥 FUNÇÃO PRINCIPAL */
 function abrirConvite() {
+  // 🔊 som de abertura
+  const som = document.getElementById("open-sound");
+  som.currentTime = 0;
+  som.volume = 1.0; // volume alto
+  som.play().catch(() => {});
+
+  // 🎵 música de fundo
+  const music = document.getElementById("bg-music");
+  music.volume = 0.4; // opcional: deixar música mais baixa
+  music.play().catch(() => {});
+
   // troca tela
   trocarTela('tela2');
 
   const video = document.getElementById("video2");
-
-  // força play (agora permitido pois veio de clique)
   video.currentTime = 0;
-  video.play().catch(() => {});
 
-  // quando terminar → tela 3
+  // garante execução do vídeo
+  setTimeout(() => {
+    video.play().catch(() => {});
+  }, 100);
+
+  // ao terminar → tela 3
   video.onended = () => {
     trocarTela('tela3');
   };
-
-  // toca música junto
-  const music = document.getElementById("bg-music");
-  music.play().catch(() => {});
 }
-
-/* CONTADOR */
-const dataEvento = new Date("2026-08-15T18:00:00");
-
-function atualizarContador() {
-  const agora = new Date();
-  const diff = dataEvento - agora;
-
-  if (diff <= 0) {
-    document.getElementById("contador").innerHTML = "🎉 É hoje!";
-    return;
-  }
-
-  const dias = Math.floor(diff / (1000 * 60 * 60 * 24));
-  const horas = Math.floor((diff / (1000 * 60 * 60)) % 24);
-  const minutos = Math.floor((diff / (1000 * 60)) % 60);
-  const segundos = Math.floor((diff / 1000) % 60);
-
-  document.getElementById("contador").innerHTML =
-    `${dias}d ${horas}h ${minutos}m ${segundos}s`;
-}
-
-setInterval(atualizarContador, 1000);
-atualizarContador();
 </script>
 
 </body>
