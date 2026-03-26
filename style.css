@@ -60,12 +60,12 @@ body {
 /* =========================
    BOTÕES (DEBUG ATIVO)
 ========================= */
-/*.area {
+.area {
   position: absolute;
-  border: 2px solid red;  REMOVER DEPOIS 
-  background: rgba(255,0,0,0.1);  REMOVER DEPOIS 
+  /*border: 2px solid red; /* REMOVER DEPOIS */
+  /*background: rgba(255,0,0,0.1);  /*REMOVER DEPOIS */
   cursor: pointer;
-}*/
+}
 
 /* =========================
    TELA 1 - BOTÃO ABRIR
