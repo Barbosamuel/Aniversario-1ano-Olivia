@@ -74,7 +74,7 @@ body {
   width: 60%;
   height: 18%;
 
-  top: 58%; /* ajuste vertical */
+  top: 60%; /* ajuste vertical */
   left: 50%;
 
   transform: translate(-50%, -50%);
@@ -104,7 +104,7 @@ body {
 
 /* botão 1 */
 .areas-botoes .circulo:nth-child(1) {
-  left: 7%;
+  left: 9%;
 }
 
 /* botão 2 */
@@ -114,7 +114,7 @@ body {
 
 /* botão 3 */
 .areas-botoes .circulo:nth-child(3) {
-  left: 73%;
+  left: 71%;
 }
 
 /* =========================
@@ -126,8 +126,8 @@ body {
 
   border-radius: 50%;
 
-  top: calc(7% + env(safe-area-inset-top));
-  right: 10%;
+  top: calc(6% + env(safe-area-inset-top));
+  right: 7%;
 }
 
 /* =========================
