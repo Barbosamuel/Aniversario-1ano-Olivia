@@ -62,6 +62,8 @@ body {
 ========================= */
 .area {
   position: absolute;
+  border: none;
+  background: transparent;
   /*border: 2px solid red; /* REMOVER DEPOIS */
   /*background: rgba(255,0,0,0.1);  /*REMOVER DEPOIS */
   cursor: pointer;
