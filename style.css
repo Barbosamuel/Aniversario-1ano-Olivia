@@ -8,43 +8,50 @@ body {
   background: #111;
   display: flex;
   justify-content: center;
+  overflow: hidden; /* 🚫 remove scroll lateral */
 }
 
-/* 📱 celular fake */
+/* 📱 celular */
 .app {
   width: 360px;
   height: 100vh;
-  overflow-y: scroll;
-  scroll-snap-type: y mandatory;
-  background: black;
+  position: relative;
+  overflow: hidden;
   border-radius: 25px;
+  background: black;
   box-shadow: 0 0 40px rgba(0,0,0,0.8);
 }
 
+/* telas */
 .tela {
-  position: relative;
+  position: absolute;
   width: 100%;
-  height: 100vh;
-  scroll-snap-align: start;
+  height: 100%;
+  display: none;
 }
 
+.tela.ativa {
+  display: block;
+}
+
+/* mídia */
 .media {
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
 
-/* =======================
-   ÁREAS INVISÍVEIS
-======================= */
+/* =====================
+   BOTÕES (DEBUG ATIVO)
+===================== */
 .area {
   position: absolute;
-  background: transparent;
-  border: none;
+  border: 2px solid red; /* 👈 VISÍVEL PRA AJUSTAR */
+  background: rgba(255,0,0,0.1);
   cursor: pointer;
 }
 
-/* 🔘 Tela 1 - botão central (retângulo) */
+/* tela 1 */
 .area-abrir {
   width: 60%;
   height: 20%;
@@ -53,7 +60,7 @@ body {
   transform: translate(-50%, -50%);
 }
 
-/* 🔘 Tela 3 - 3 círculos */
+/* tela 3 */
 .areas-botoes {
   position: absolute;
   top: 60%;
@@ -68,7 +75,7 @@ body {
   border-radius: 50%;
 }
 
-/* 🔘 Tela 4 - botão voltar */
+/* tela 4 */
 .voltar {
   width: 50px;
   height: 50px;
@@ -77,7 +84,7 @@ body {
   right: 5%;
 }
 
-/* ⏳ contador */
+/* contador */
 .contador {
   position: absolute;
   top: 10%;
