@@ -164,3 +164,28 @@ body {
   padding: 8px;
   border-radius: 10px;
 }
+
+/* =========================
+   ANIMAÇÃO PAPEL ABRINDO
+========================= */
+.tela3-animando {
+  animation: abrirPapel 0.8s ease forwards;
+  transform-origin: center;
+}
+
+@keyframes abrirPapel {
+  0% {
+    opacity: 0;
+    transform: scale(0.2) rotateX(60deg);
+  }
+
+  50% {
+    opacity: 1;
+    transform: scale(1.05) rotateX(0deg);
+  }
+
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
