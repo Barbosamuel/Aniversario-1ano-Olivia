@@ -75,22 +75,20 @@
 </div>
 
 <script>
-function trocarTela(id) {
-  document.querySelectorAll('.tela').forEach(t => t.classList.remove('ativa'));
-  document.getElementById(id).classList.add('ativa');
-}
-
 function abrirConvite() {
-  // 🔊 som de abertura
+  // 🔔 som de abertura
   const som = document.getElementById("open-sound");
   som.currentTime = 0;
-  som.volume = 1.0; // volume alto
+  som.volume = 1.0;
   som.play().catch(() => {});
 
-  // 🎵 música de fundo
+  // 🎵 música de fundo (com pequeno delay)
   const music = document.getElementById("bg-music");
-  music.volume = 0.4; // opcional: deixar música mais baixa
-  music.play().catch(() => {});
+  music.volume = 0.4;
+
+  setTimeout(() => {
+    music.play().catch(() => {});
+  }, 300); // 👈 ESSENCIAL
 
   // troca tela
   trocarTela('tela2');
@@ -98,12 +96,10 @@ function abrirConvite() {
   const video = document.getElementById("video2");
   video.currentTime = 0;
 
-  // garante execução do vídeo
   setTimeout(() => {
     video.play().catch(() => {});
   }, 100);
 
-  // ao terminar → tela 3
   video.onended = () => {
     trocarTela('tela3');
   };
