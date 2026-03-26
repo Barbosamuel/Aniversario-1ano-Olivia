@@ -163,8 +163,8 @@ function abrirCalendario() {
   const isIOS = /iPad|iPhone|iPod/.test(userAgent) && !window.MSStream;
 
   if (isIOS) {
-    // 🍎 iPhone → arquivo .ics
-    window.open("assets/aniversario.ics", "_blank");
+    // 🍎 iPhone → abre direto o .ics
+    window.location.href = "assets/aniversario.ics";
   } else {
     // 🤖 Android / 💻 Desktop → Google Calendar
     window.open(
