@@ -90,7 +90,7 @@ body {
   width: 30%;   /* largura do retângulo */
   height: 10%;  /* altura */
 
-  top: 30%;     /* 👈 fica acima dos círculos */
+  top: 39%;     /* 👈 fica acima dos círculos */
   right: 8%;    /* 👈 alinhado mais pra direita */
 
   border-radius: 12px;
