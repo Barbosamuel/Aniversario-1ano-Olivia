@@ -72,9 +72,9 @@ body {
 ========================= */
 .area-abrir {
   width: 60%;
-  height: 18%;
+  height: 20%;
 
-  top: 60%; /* ajuste vertical */
+  top: 58%; /* ajuste vertical */
   left: 50%;
 
   transform: translate(-50%, -50%);
@@ -86,7 +86,7 @@ body {
 .areas-botoes {
   position: absolute;
 
-  top: 54%; /* ajuste vertical */
+  top: 53%; /* ajuste vertical */
   left: 50%;
   transform: translateX(-50%);
 
