@@ -27,11 +27,11 @@
 <div class="app">
 
   <!-- Música -->
-   <audio id="bg-music" loop>
+  <audio id="bg-music" loop preload="auto">
     <source src="assets/MinhaPaz.mp3" type="audio/mpeg">
   </audio>
   
-  <audio id="open-sound">
+  <audio id="open-sound" preload="auto">
     <source src="assets/MagicChime.mp3" type="audio/mpeg">
   </audio>
 
@@ -43,7 +43,7 @@
 
   <!-- TELA 2 -->
   <section id="tela2" class="tela">
-    <video class="media" id="video2" autoplay muted playsinline>
+    <video class="media" id="video2" autoplay muted playsinline preload="auto">
       <source src="assets/tela2.mp4" type="video/mp4">
     </video>
   </section>
@@ -91,24 +91,27 @@ function abrirConvite() {
   // 🔔 toca efeito
   som.currentTime = 0;
   som.volume = 1;
-  som.play().catch(() => {});
 
-  music.currentTime = 0;
-  music.play().catch(() => {});
+  som.play().then(() => {
 
-  // 🎬 vídeo
-  video.currentTime = 0;
-  video.play().catch(() => {});
+    // 🎬 inicia vídeo
+    video.currentTime = 0;
+    video.play().catch(() => {});
 
-  video.onended = () => {
-    trocarTela('tela3');
-  };
+    video.onended = () => {
+      trocarTela('tela3');
+    };
 
-  // 🎵 música (leve delay pra não conflitar)
-  /*setTimeout(() => {
-    music.volume = 0.4;
-    music.play().catch(() => {});
-  }, 300);*/
+    // 🎵 quando terminar o efeito → toca música
+    som.onended = () => {
+      music.currentTime = 0;
+      music.volume = 0.4;
+      music.play().catch(() => {});
+    };
+
+  }).catch(() => {
+    console.log("Erro ao tocar som");
+  });
 }
 
 /* CONTADOR */
