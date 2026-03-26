@@ -169,7 +169,7 @@ body {
    ANIMAÇÃO PAPEL ABRINDO
 ========================= */
 .tela3-animando {
-  animation: abrirPapel 0.8s ease forwards;
+  animation: abrirPapel 1.2s cubic-bezier(0.22, 1, 0.36, 1) forwards;
   transform-origin: center;
 }
 
