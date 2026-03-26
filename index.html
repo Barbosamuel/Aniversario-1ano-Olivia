@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Convite de Aniversário</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="app">
+
+  <!-- Música -->
+  <audio id="bg-music" loop>
+    <source src="assets/musica.mp3" type="audio/mpeg">
+  </audio>
+
+  <!-- TELA 1 -->
+  <section id="tela1" class="tela">
+    <img src="assets/tela1.jpg" class="media">
+
+    <button class="btn btn-start" onclick="irPara('tela2')">
+      Abrir Convite
+    </button>
+  </section>
+
+  <!-- TELA 2 -->
+  <section id="tela2" class="tela">
+    <video class="media" autoplay muted playsinline id="video2">
+      <source src="assets/tela2.mp4" type="video/mp4">
+    </video>
+  </section>
+
+  <!-- TELA 3 -->
+  <section id="tela3" class="tela">
+    <video class="media" autoplay muted loop playsinline>
+      <source src="assets/tela3.mp4" type="video/mp4">
+    </video>
+
+    <!-- CONTADOR -->
+    <div class="contador" id="contador"></div>
+
+    <div class="botoes">
+      <a href="https://forms.gle/SEU_FORM" target="_blank" class="btn">Confirmar Presença</a>
+      <a href="https://maps.google.com/?q=LOCAL" target="_blank" class="btn">Localização</a>
+      <button class="btn" onclick="irPara('tela4')">Presentes</button>
+    </div>
+  </section>
+
+  <!-- TELA 4 -->
+  <section id="tela4" class="tela">
+    <video class="media" autoplay muted loop playsinline>
+      <source src="assets/tela4.mp4" type="video/mp4">
+    </video>
+  </section>
+
+</div>
+
+<script>
+function irPara(id) {
+  document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
+}
+
+// Auto avançar após vídeo 2
+document.getElementById("video2").addEventListener("ended", function() {
+  irPara('tela3');
+});
+
+// Música ao primeiro clique
+document.body.addEventListener('click', function () {
+  const music = document.getElementById("bg-music");
+  music.play().catch(() => {});
+}, { once: true });
+
+/* =========================
+   CONTADOR REGRESSIVO
+========================= */
+
+// ⚠️ ALTERE A DATA AQUI
+const dataEvento = new Date("2026-08-15T18:00:00");
+
+function atualizarContador() {
+  const agora = new Date();
+  const diff = dataEvento - agora;
+
+  if (diff <= 0) {
+    document.getElementById("contador").innerHTML = "🎉 É hoje!";
+    return;
+  }
+
+  const dias = Math.floor(diff / (1000 * 60 * 60 * 24));
+  const horas = Math.floor((diff / (1000 * 60 * 60)) % 24);
+  const minutos = Math.floor((diff / (1000 * 60)) % 60);
+  const segundos = Math.floor((diff / 1000) % 60);
+
+  document.getElementById("contador").innerHTML =
+    `${dias}d ${horas}h ${minutos}m ${segundos}s`;
+}
+
+setInterval(atualizarContador, 1000);
+atualizarContador();
+
+</script>
+
+</body>
+</html>
