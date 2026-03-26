@@ -43,7 +43,7 @@
 
   <!-- TELA 2 -->
   <section id="tela2" class="tela">
-    <video class="media" id="video2" autoplay muted playsinline>
+    <video class="media" id="video2" autoplay playsinline>
       <source src="assets/tela2.mp4" type="video/mp4">
     </video>
   </section>
@@ -75,42 +75,55 @@
 </div>
 
 <script>
+function trocarTela(id) {
+  document.querySelectorAll('.tela').forEach(t => t.classList.remove('ativa'));
+  document.getElementById(id).classList.add('ativa');
+}
+
+/* 🔥 FUNÇÃO PRINCIPAL */
 function abrirConvite() {
-  const som = document.getElementById("open-sound");
-  const music = document.getElementById("bg-music");
+  // troca tela
+  trocarTela('tela2');
+
   const video = document.getElementById("video2");
 
-  // 🔔 som de abertura
-  som.currentTime = 0;
-  som.volume = 1.0;
+  // força play (agora permitido pois veio de clique)
+  video.currentTime = 0;
+  video.play().catch(() => {});
 
-  som.play().then(() => {
+  // quando terminar → tela 3
+  video.onended = () => {
+    trocarTela('tela3');
+  };
 
-    // 🎵 música começa depois do clique (garantido)
-    music.currentTime = 0;
-    music.volume = 0.4;
-    music.play().catch(() => {});
-
-    // troca tela
-    trocarTela('tela2');
-
-    // 🎬 inicia vídeo
-    video.currentTime = 0;
-    video.muted = true;
-
-    video.play().then(() => {
-      // quando terminar → tela 3
-      video.onended = () => {
-        trocarTela('tela3');
-      };
-    }).catch(() => {
-      console.log("Erro ao iniciar vídeo");
-    });
-
-  }).catch(() => {
-    console.log("Erro ao tocar som");
-  });
+  // toca música junto
+  const music = document.getElementById("bg-music");
+  music.play().catch(() => {});
 }
+
+/* CONTADOR */
+const dataEvento = new Date("2026-08-15T18:00:00");
+
+function atualizarContador() {
+  const agora = new Date();
+  const diff = dataEvento - agora;
+
+  if (diff <= 0) {
+    document.getElementById("contador").innerHTML = "🎉 É hoje!";
+    return;
+  }
+
+  const dias = Math.floor(diff / (1000 * 60 * 60 * 24));
+  const horas = Math.floor((diff / (1000 * 60 * 60)) % 24);
+  const minutos = Math.floor((diff / (1000 * 60)) % 60);
+  const segundos = Math.floor((diff / 1000) % 60);
+
+  document.getElementById("contador").innerHTML =
+    `${dias}d ${horas}h ${minutos}m ${segundos}s`;
+}
+
+setInterval(atualizarContador, 1000);
+atualizarContador();
 </script>
 
 </body>
