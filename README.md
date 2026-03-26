@@ -14,28 +14,18 @@ https://barbosamuel.github.io/Aniversario-1ano-Olivia/
 - 🔔 Efeito sonoro ao abrir o convite
 - 🎵 Música de fundo durante a navegação
 - ⏳ Contador regressivo para o evento
+- 🎭 Transição animada entre telas (efeito papel abrindo)
 - 📍 Integração com Google Maps
 - 📝 Confirmação de presença via Google Forms
 - 🎁 Tela com sugestões de presentes
+- 📅 Botão inteligente "Adicionar ao Calendário"
 - 🔙 Navegação entre telas com botões invisíveis
 
 ---
 
 ## 🧭 Estrutura do Projeto
-📁 Aniversario-1ano-Olivia
-│
-├── index.html
-├── style.css
-│
-└── 📁 assets
-├── tela1.png
-├── tela2.mp4
-├── tela3.mp4
-├── tela4.mp4
-├── MinhaPaz.mp3
-├── MagicChime.mp3
-├── preview.png
-└── favicon.png
+<img width="224" height="394" alt="image" src="https://github.com/user-attachments/assets/f732a00d-a126-4903-a13f-2d6f9cd85cac" />
+
 
 ---
 
@@ -52,12 +42,39 @@ A navegação ocorre através de áreas clicáveis posicionadas sobre imagens/v�
 
 ---
 
+## 🎬 Transições
+
+- Transição suave entre telas com `opacity`
+- Efeito especial entre tela 2 → tela 3 simulando:
+  - 📜 papel se desdobrando
+  - animação com `scale`, `rotateX` e easing customizado
+
+---
+
 ## 🔊 Áudio
 
 - 🎵 Música de fundo: `MinhaPaz.mp3`
 - 🔔 Efeito sonoro: `MagicChime.mp3`
 
-O áudio é ativado após a primeira interação do usuário (clique), devido às políticas dos navegadores.
+A música inicia corretamente após interação do usuário devido às políticas de autoplay dos navegadores.
+
+---
+
+## 📅 Integração com Calendário
+
+O botão de calendário é inteligente:
+
+- 🍎 iPhone → abre diretamente no Apple Calendar via `.ics`
+- 🤖 Android / 💻 Desktop → abre Google Calendar
+
+Arquivo utilizado:
+assets/aniversario.ics
+
+
+Inclui:
+- 📅 Data e horário do evento
+- 📍 Local com link do Maps
+- ⏰ Lembrete automático (1 hora antes)
 
 ---
 
@@ -65,7 +82,7 @@ O áudio é ativado após a primeira interação do usuário (clique), devido à
 
 O projeto está hospedado via **GitHub Pages**.
 
-Para publicar:
+### Para publicar:
 
 1. Vá em **Settings > Pages**
 2. Selecione:
@@ -77,29 +94,34 @@ Para publicar:
 
 ## 🖼️ Preview ao Compartilhar
 
-O preview do link (WhatsApp, redes sociais) é configurado via Open Graph:
+O preview (WhatsApp, redes sociais) utiliza Open Graph:
 
 - Imagem: `assets/preview.png`
-- Título e descrição personalizados no `<head>`
+- Configurado no `<head>` do HTML
+
+⚠️ Pode ser necessário usar parâmetros no link para forçar atualização:
+https://barbosamuel.github.io/Aniversario-1ano-Olivia/?v=1
+
 
 ---
 
 ## ⚠️ Observações
 
-- O som pode não iniciar automaticamente em alguns dispositivos devido a restrições do navegador
-- Recomenda-se acessar com o volume ativado
-- O layout foi otimizado para visualização vertical (celular)
+- O áudio depende de interação do usuário (restrição dos navegadores)
+- O layout é otimizado para celular (visual vertical)
+- O `.ics` pode baixar ou abrir diretamente dependendo do dispositivo
+- GitHub Pages pode levar alguns segundos para atualizar novos arquivos
 
 ---
 
 ## 🚀 Tecnologias Utilizadas
 
 - HTML5
-- CSS3
-- JavaScript
+- CSS3 (animações e responsividade)
+- JavaScript (interações e lógica)
 
 ---
 
-## ❤️ Autor
+## Autor
 
 Desenvolvido por Samuel Barbosa
