@@ -5,20 +5,22 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Aniversário 1 Ano Olívia 🎉</title>
 
-  <!-- Open Graph (WhatsApp, Facebook, etc) -->
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="assets/favicon.png">
+
+  <!-- Open Graph -->
   <meta property="og:title" content="Aniversário de 1 Ano da Olívia 🎉">
   <meta property="og:description" content="Você está convidado para comemorar esse momento especial conosco! 💖">
   <meta property="og:image" content="https://barbosamuel.github.io/Aniversario-1ano-Olivia/assets/preview.png">
   <meta property="og:url" content="https://barbosamuel.github.io/Aniversario-1ano-Olivia/">
   <meta property="og:type" content="website">
 
-  <!-- Twitter (opcional, mas recomendado) -->
+  <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Aniversário de 1 Ano da Olivia 🎉">
   <meta name="twitter:description" content="Você está convidado para comemorar esse momento especial conosco! 💖">
   <meta name="twitter:image" content="https://barbosamuel.github.io/Aniversario-1ano-Olivia/assets/preview.png">
 
-  <!-- CSS -->
   <link rel="stylesheet" href="style.css">
 </head>
 
@@ -26,11 +28,11 @@
 
 <div class="app">
 
-  <!-- Música -->
+  <!-- Áudios -->
   <audio id="bg-music" loop preload="auto">
     <source src="assets/MinhaPaz.mp3" type="audio/mpeg">
   </audio>
-  
+
   <audio id="open-sound" preload="auto">
     <source src="assets/MagicChime.mp3" type="audio/mpeg">
   </audio>
@@ -43,7 +45,7 @@
 
   <!-- TELA 2 -->
   <section id="tela2" class="tela">
-    <video class="media" id="video2" autoplay muted playsinline preload="auto">
+    <video class="media" id="video2" muted playsinline preload="auto">
       <source src="assets/tela2.mp4" type="video/mp4">
     </video>
   </section>
@@ -80,7 +82,28 @@ function trocarTela(id) {
   document.getElementById(id).classList.add('ativa');
 }
 
-/* 🔥 FUNÇÃO PRINCIPAL */
+/* =========================
+   LIBERAR ÁUDIO (ESSENCIAL)
+========================= */
+let audioLiberado = false;
+
+function liberarAudio() {
+  if (audioLiberado) return;
+
+  const music = document.getElementById("bg-music");
+
+  music.play().then(() => {
+    music.pause();
+    music.currentTime = 0;
+    audioLiberado = true;
+  }).catch(() => {});
+}
+
+document.body.addEventListener("click", liberarAudio, { once: true });
+
+/* =========================
+   ABRIR CONVITE
+========================= */
 function abrirConvite() {
   trocarTela('tela2');
 
@@ -88,33 +111,28 @@ function abrirConvite() {
   const music = document.getElementById("bg-music");
   const som = document.getElementById("open-sound");
 
-  // 🔔 toca efeito
+  // 🔔 efeito
   som.currentTime = 0;
   som.volume = 1;
+  som.play().catch(() => {});
 
-  som.play().then(() => {
+  // 🎵 música
+  music.currentTime = 0;
+  music.volume = 0.4;
+  music.play().catch(() => {});
 
-    // 🎬 inicia vídeo
-    video.currentTime = 0;
-    video.play().catch(() => {});
+  // 🎬 vídeo
+  video.currentTime = 0;
+  video.play().catch(() => {});
 
-    video.onended = () => {
-      trocarTela('tela3');
-    };
-
-    // 🎵 quando terminar o efeito → toca música
-    som.onended = () => {
-      music.currentTime = 0;
-      music.volume = 0.4;
-      music.play().catch(() => {});
-    };
-
-  }).catch(() => {
-    console.log("Erro ao tocar som");
-  });
+  video.onended = () => {
+    trocarTela('tela3');
+  };
 }
 
-/* CONTADOR */
+/* =========================
+   CONTADOR
+========================= */
 const dataEvento = new Date("2026-08-15T18:00:00");
 
 function atualizarContador() {
