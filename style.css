@@ -17,15 +17,17 @@ body {
 }
 
 /* =========================
-   APP (PROPORÇÃO 9:16 REAL)
+   APP (PROPORÇÃO + SAFE AREA)
 ========================= */
 .app {
   aspect-ratio: 9 / 16;
-  height: 100dvh;
+  height: calc(100dvh - env(safe-area-inset-top));
   max-width: 100vw;
 
   position: relative;
   overflow: hidden;
+
+  padding-top: env(safe-area-inset-top);
 
   border-radius: 25px;
   background: black;
@@ -52,7 +54,7 @@ body {
 .media {
   width: 100%;
   height: 100%;
-  object-fit: contain; /* 👈 evita corte */
+  object-fit: contain; /* evita corte */
 }
 
 /* =========================
@@ -72,7 +74,7 @@ body {
   width: 60%;
   height: 18%;
 
-  top: 55%; /* 👈 ajuste vertical aqui */
+  top: 55%; /* ajuste vertical */
   left: 50%;
 
   transform: translate(-50%, -50%);
@@ -84,7 +86,7 @@ body {
 .areas-botoes {
   position: absolute;
 
-  top: 58%; /* 👈 ajuste vertical fino */
+  top: 58%; /* ajuste vertical */
   left: 50%;
   transform: translateX(-50%);
 
@@ -124,7 +126,7 @@ body {
 
   border-radius: 50%;
 
-  top: 5%;
+  top: calc(5% + env(safe-area-inset-top));
   right: 5%;
 }
 
@@ -134,7 +136,7 @@ body {
 .contador {
   position: absolute;
 
-  top: 8%; /* ajustado pra não cortar no celular */
+  top: calc(8% + env(safe-area-inset-top));
   width: 100%;
 
   text-align: center;
