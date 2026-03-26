@@ -111,15 +111,20 @@ function abrirConvite() {
   const music = document.getElementById("bg-music");
   const som = document.getElementById("open-sound");
 
-  // 🔔 efeito
-  som.currentTime = 0;
-  som.volume = 1;
-  som.play().catch(() => {});
-
-  // 🎵 música
+  // 🎵 PRIORIDADE: música primeiro
   music.currentTime = 0;
   music.volume = 0.4;
-  music.play().catch(() => {});
+
+  music.play().then(() => {
+
+    // 🔔 efeito (agora não bloqueia)
+    som.currentTime = 0;
+    som.volume = 1;
+    som.play().catch(() => {});
+
+  }).catch(() => {
+    console.log("Erro ao iniciar música");
+  });
 
   // 🎬 vídeo
   video.currentTime = 0;
