@@ -83,26 +83,7 @@ function trocarTela(id) {
 }
 
 /* =========================
-   LIBERAR ÁUDIO (ESSENCIAL)
-========================= */
-let audioLiberado = false;
-
-function liberarAudio() {
-  if (audioLiberado) return;
-
-  const music = document.getElementById("bg-music");
-
-  music.play().then(() => {
-    music.pause();
-    music.currentTime = 0;
-    audioLiberado = true;
-  }).catch(() => {});
-}
-
-document.body.addEventListener("click", liberarAudio, { once: true });
-
-/* =========================
-   ABRIR CONVITE
+   ABRIR CONVITE (VERSÃO FINAL)
 ========================= */
 function abrirConvite() {
   trocarTela('tela2');
@@ -111,25 +92,26 @@ function abrirConvite() {
   const music = document.getElementById("bg-music");
   const som = document.getElementById("open-sound");
 
-  // 🎵 PRIORIDADE: música primeiro
+  // 🎵 PRIMEIRO: música (ESSENCIAL)
   music.currentTime = 0;
   music.volume = 0.4;
 
   music.play().then(() => {
 
-    // 🔔 efeito (agora não bloqueia)
+    // 🔔 depois o efeito
     som.currentTime = 0;
     som.volume = 1;
     som.play().catch(() => {});
 
-  }).catch(() => {
-    console.log("Erro ao iniciar música");
+  }).catch((e) => {
+    console.log("Erro ao tocar música:", e);
   });
 
   // 🎬 vídeo
   video.currentTime = 0;
   video.play().catch(() => {});
 
+  // ⏭️ próxima tela
   video.onended = () => {
     trocarTela('tela3');
   };
