@@ -3,8 +3,15 @@ VERSION:2.0
 BEGIN:VEVENT
 SUMMARY:Aniversário de 1 Ano da Olívia
 DESCRIPTION:Venha celebrar esse momento especial!
-LOCATION:https://maps.app.goo.gl/jEGpRhF978vjguDN7
+LOCATION:Local da festa - https://maps.app.goo.gl/jEGpRhF978vjguDN7
 DTSTART:20260815T210000Z
 DTEND:20260815T230000Z
+
+BEGIN:VALARM
+TRIGGER:-PT1H
+ACTION:DISPLAY
+DESCRIPTION:Lembrete: Aniversário da Olívia começa em 1 hora!
+END:VALARM
+
 END:VEVENT
 END:VCALENDAR
