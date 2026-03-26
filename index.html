@@ -20,9 +20,8 @@
   <section id="tela1" class="tela">
     <img src="assets/tela1.jpg" class="media">
 
-    <button class="btn btn-start" onclick="irPara('tela2')">
-      Abrir Convite
-    </button>
+    <!-- BOTÃO INVISÍVEL CENTRAL -->
+    <button class="area area-abrir" onclick="irPara('tela2')"></button>
   </section>
 
   <!-- TELA 2 -->
@@ -41,10 +40,11 @@
     <!-- CONTADOR -->
     <div class="contador" id="contador"></div>
 
-    <div class="botoes">
-      <a href="https://docs.google.com/forms/d/e/1FAIpQLSe4CqGrIl2k3zMmTyd9MqphWRWIwXuzMXq1noNEW51Jq_i5UA/viewform?usp=header" target="_blank" class="btn">Confirmar Presença</a>
-      <a href="https://maps.app.goo.gl/jEGpRhF978vjguDN7" target="_blank" class="btn">Localização</a>
-      <button class="btn" onclick="irPara('tela4')">Presentes</button>
+    <!-- BOTÕES INVISÍVEIS (3 CÍRCULOS) -->
+    <div class="areas-botoes">
+      <a href="https://docs.google.com/forms/d/e/1FAIpQLSe4CqGrIl2k3zMmTyd9MqphWRWIwXuzMXq1noNEW51Jq_i5UA/viewform?usp=header" target="_blank" class="area circulo"></a>
+      <a href="https://maps.app.goo.gl/jEGpRhF978vjguDN7" target="_blank" class="area circulo"></a>
+      <button class="area circulo" onclick="irPara('tela4')"></button>
     </div>
   </section>
 
@@ -53,6 +53,9 @@
     <video class="media" autoplay muted loop playsinline>
       <source src="assets/tela4.mp4" type="video/mp4">
     </video>
+
+    <!-- BOTÃO VOLTAR -->
+    <button class="area voltar" onclick="irPara('tela3')"></button>
   </section>
 
 </div>
@@ -62,7 +65,7 @@ function irPara(id) {
   document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
 }
 
-// Auto avançar após vídeo 2
+// Auto avançar vídeo
 document.getElementById("video2").addEventListener("ended", function() {
   irPara('tela3');
 });
@@ -73,11 +76,7 @@ document.body.addEventListener('click', function () {
   music.play().catch(() => {});
 }, { once: true });
 
-/* =========================
-   CONTADOR REGRESSIVO
-========================= */
-
-// ⚠️ ALTERE A DATA AQUI
+/* CONTADOR */
 const dataEvento = new Date("2026-08-15T18:00:00");
 
 function atualizarContador() {
@@ -100,7 +99,6 @@ function atualizarContador() {
 
 setInterval(atualizarContador, 1000);
 atualizarContador();
-
 </script>
 
 </body>
