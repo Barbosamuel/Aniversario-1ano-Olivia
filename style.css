@@ -61,16 +61,34 @@ body {
 /* tela 3 */
 .areas-botoes {
   position: absolute;
-  top: 60%;
+  top: 65%; /* você pode ajustar */
   width: 100%;
-  display: flex;
-  justify-content: space-around;
+  height: 80px;
 }
 
+/* cada botão separado */
 .circulo {
   width: 60px;
   height: 60px;
   border-radius: 50%;
+}
+
+/* botão 1 */
+.areas-botoes .circulo:nth-child(1) {
+  position: absolute;
+  left: 15%;
+}
+
+/* botão 2 */
+.areas-botoes .circulo:nth-child(2) {
+  position: absolute;
+  left: 40%;
+}
+
+/* botão 3 */
+.areas-botoes .circulo:nth-child(3) {
+  position: absolute;
+  left: 70%;
 }
 
 /* tela 4 */
