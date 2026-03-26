@@ -176,12 +176,20 @@ body {
 @keyframes abrirPapel {
   0% {
     opacity: 0;
-    transform: scaleY(0.1) scaleX(0.6);
+    transform: scaleY(0.05) scaleX(0.7) rotateX(60deg);
   }
 
-  50% {
+  30% {
     opacity: 1;
-    transform: scaleY(1.1) scaleX(1.05);
+    transform: scaleY(0.6) scaleX(0.9) rotateX(20deg);
+  }
+
+  60% {
+    transform: scaleY(1.05) scaleX(1.02) rotateX(0deg);
+  }
+
+  80% {
+    transform: scaleY(0.98) scaleX(0.99);
   }
 
   100% {
