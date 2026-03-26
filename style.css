@@ -74,7 +74,7 @@ body {
   width: 60%;
   height: 18%;
 
-  top: 55%; /* ajuste vertical */
+  top: 58%; /* ajuste vertical */
   left: 50%;
 
   transform: translate(-50%, -50%);
@@ -86,7 +86,7 @@ body {
 .areas-botoes {
   position: absolute;
 
-  top: 58%; /* ajuste vertical */
+  top: 45%; /* ajuste vertical */
   left: 50%;
   transform: translateX(-50%);
 
@@ -97,14 +97,14 @@ body {
 /* círculos */
 .circulo {
   position: absolute;
-  width: 60px;
-  height: 60px;
+  width: 70px;
+  height: 70px;
   border-radius: 50%;
 }
 
 /* botão 1 */
 .areas-botoes .circulo:nth-child(1) {
-  left: 0%;
+  left: 5%;
 }
 
 /* botão 2 */
@@ -114,20 +114,20 @@ body {
 
 /* botão 3 */
 .areas-botoes .circulo:nth-child(3) {
-  left: 80%;
+  left: 75%;
 }
 
 /* =========================
    TELA 4 - BOTÃO VOLTAR
 ========================= */
 .voltar {
-  width: 50px;
-  height: 50px;
+  width: 80px;
+  height: 80px;
 
   border-radius: 50%;
 
-  top: calc(5% + env(safe-area-inset-top));
-  right: 5%;
+  top: calc(10% + env(safe-area-inset-top));
+  right: 10%;
 }
 
 /* =========================
