@@ -43,7 +43,7 @@
 
   <!-- TELA 2 -->
   <section id="tela2" class="tela">
-    <video class="media" id="video2" autoplay playsinline>
+    <video class="media" id="video2" autoplay muted playsinline>
       <source src="assets/tela2.mp4" type="video/mp4">
     </video>
   </section>
@@ -82,23 +82,30 @@ function trocarTela(id) {
 
 /* 🔥 FUNÇÃO PRINCIPAL */
 function abrirConvite() {
-  // troca tela
   trocarTela('tela2');
 
   const video = document.getElementById("video2");
+  const music = document.getElementById("bg-music");
+  const som = document.getElementById("open-sound");
 
-  // força play (agora permitido pois veio de clique)
+  // 🔔 toca efeito
+  som.currentTime = 0;
+  som.volume = 1;
+  som.play().catch(() => {});
+
+  // 🎬 vídeo
   video.currentTime = 0;
   video.play().catch(() => {});
 
-  // quando terminar → tela 3
   video.onended = () => {
     trocarTela('tela3');
   };
 
-  // toca música junto
-  const music = document.getElementById("bg-music");
-  music.play().catch(() => {});
+  // 🎵 música (leve delay pra não conflitar)
+  setTimeout(() => {
+    music.volume = 0.4;
+    music.play().catch(() => {});
+  }, 300);
 }
 
 /* CONTADOR */
